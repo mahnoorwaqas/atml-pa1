@@ -1,0 +1,9 @@
+defaults: base.yaml
+method:
+  name: dan
+  lambda_mmd: 1.0
+  bandwidth_scales: [0.5, 1.0, 2.0]
+checkpoint_path: task2/results/checkpoints/dan.pt
+controlled_study:
+  sweep_param: lambda_mmd
+  values: [0.1, 1.0, 10.0]

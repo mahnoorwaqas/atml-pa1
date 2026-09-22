@@ -1,0 +1,6 @@
+defaults: base.yaml
+method:
+  name: cdan
+  discriminator_hidden_dim: 256
+  discriminator_dropout: 0.5
+checkpoint_path: task2/results/checkpoints/cdan.pt

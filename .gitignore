@@ -1,0 +1,10 @@
+data_raw/
+.venv/
+*/.venv/
+__pycache__/
+*.pyc
+.DS_Store
+.ipynb_checkpoints/
+task1/results/
+task2/results/
+task3/results/

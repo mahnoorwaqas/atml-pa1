@@ -1,0 +1,10 @@
+defaults: base.yaml
+method:
+  name: dann
+  discriminator_hidden_dim: 256
+  discriminator_dropout: 0.5
+  max_grl_strength: 1.0   # scales the alpha(p) schedule's ceiling; controlled study sweeps this
+checkpoint_path: task2/results/checkpoints/dann.pt
+controlled_study:
+  sweep_param: max_grl_strength
+  values: [0.25, 0.5, 1.0]

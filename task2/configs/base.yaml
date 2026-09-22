@@ -1,0 +1,22 @@
+seed: 6304
+
+data:
+  root: ./data_raw/PACS   # expects <root>/<domain>/<class>/*.jpg -- see shared/pacs.py
+  n_classes: 7
+  per_source_batch: 8
+  per_target_batch: 24
+
+model:
+  weights: IMAGENET1K_V1
+
+training:
+  max_epochs: 30
+  early_stop_patience: 5
+  optimizer: adamw
+  lr: 1.0e-4
+  weight_decay: 1.0e-4
+  # "epoch" isn't fully pinned down by the assignment for a domain-balanced
+  # multi-source protocol -- null uses shared/pacs_protocol.py's default
+  # (covers the smallest source domain once per epoch). Set an integer here
+  # to override with a fixed value instead.
+  steps_per_epoch: null

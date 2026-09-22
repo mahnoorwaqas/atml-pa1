@@ -1,0 +1,4 @@
+defaults: base.yaml
+method:
+  name: source_only
+checkpoint_path: task2/results/checkpoints/source_only.pt

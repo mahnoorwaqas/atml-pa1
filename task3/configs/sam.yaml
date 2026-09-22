@@ -1,0 +1,8 @@
+defaults: base.yaml
+method:
+  name: sam
+  rho: 0.05
+checkpoint_path: task3/results/checkpoints/sam.pt
+controlled_study:
+  sweep_param: rho
+  values: [0.01, 0.05, 0.1]

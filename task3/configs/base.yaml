@@ -1,0 +1,17 @@
+seed: 6304
+
+data:
+  root: ./data_raw/PACS   # SAME PACS copy as Task 2 -- shared/pacs_protocol.py reuses Task 2's splits
+  n_classes: 7
+  per_source_batch: 8
+  # no per_target_batch -- Task 3 never loads target/Sketch images during training
+
+model:
+  weights: IMAGENET1K_V1
+
+training:
+  max_epochs: 30
+  early_stop_patience: 5
+  lr: 1.0e-4
+  weight_decay: 1.0e-4
+  steps_per_epoch: null  # see shared/pacs_protocol.py::default_steps_per_epoch

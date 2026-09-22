@@ -1,0 +1,4 @@
+defaults: base.yaml
+method:
+  name: erm
+checkpoint_path: task2/results/checkpoints/source_only.pt  # reused UNCHANGED from Task 2, never retrained here
