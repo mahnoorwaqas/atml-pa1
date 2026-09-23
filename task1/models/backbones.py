@@ -179,10 +179,10 @@ class LinearHead:
         return {"best_val_accuracy": best_val_acc, "epochs_trained": epoch + 1}
 
     def predict_logits(self, features):
-    self.model.eval()
-    features = features.to(next(self.model.parameters()).device)
-    with torch.no_grad():
-        return self.model(features)
+        self.model.eval()
+        features = features.to(next(self.model.parameters()).device)
+        with torch.no_grad():
+            return self.model(features)
 
 
 def get_backbone(name, cfg):
