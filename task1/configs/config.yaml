@@ -34,8 +34,17 @@ color_bias:
 
 cue_conflict:
   method: adain
-  n_class_pairs: 5                # >= 5 unordered pairs, state your choice + hypothesis
-  style_strength: 1.0              # AdaIN alpha, state your choice + hypothesis
+  n_class_pairs: 5
+  class_pairs:                 # hand-picked: distinct shape vs. texture
+    - [cat, car]
+    - [dog, airplane]
+    - [horse, ship]
+    - [bird, truck]
+    - [monkey, ship]
+  style_strength: 0.8          # was 1.0; tune with --preview
+  edge_corr_min: 0.30          # reject if silhouette destroyed
+  edge_corr_max: 0.90          # reject if style barely applied
+  min_std_threshold: 0.02
   min_valid_conflicts: 200
   both_directions: true
 
