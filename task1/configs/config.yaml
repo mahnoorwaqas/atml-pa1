@@ -41,7 +41,7 @@ cue_conflict:
     - [horse, ship]
     - [bird, truck]
     - [monkey, ship]
-  style_strength: 0.8          # was 1.0; tune with --preview
+  style_strength: 0.65         # was 1.0; tune with --preview
   edge_corr_min: 0.30          # reject if silhouette destroyed
   edge_corr_max: 0.90          # reject if style barely applied
   min_std_threshold: 0.02
