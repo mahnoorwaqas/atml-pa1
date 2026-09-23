@@ -1,0 +1,18 @@
+seed: 6304
+
+data:
+  root: ./data_raw
+  n_classes: 10
+
+training:
+  lr: 0.1
+  weight_decay: 5.0e-4
+  batch_size: 128
+  max_epochs: 100
+
+method:
+  name: gcsc
+  randaugment_num_ops: 2
+  randaugment_magnitude: 9
+
+checkpoint_path: task4/results/checkpoints/gcsc.pt

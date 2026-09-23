@@ -1,0 +1,20 @@
+seed: 6304
+
+data:
+  root: ./data_raw
+  n_classes: 10
+
+training:
+  lr: 1.0e-3
+  weight_decay: 5.0e-4
+  batch_size: 128
+  max_epochs: 50
+
+method:
+  name: proser
+  beta: 1.0
+  gamma: 0.1
+  n_dummy: 5
+
+vanilla_checkpoint_path: task4/results/checkpoints/vanilla.pt
+checkpoint_path: task4/results/checkpoints/proser.pt
