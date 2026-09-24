@@ -6,12 +6,19 @@ it (via a "defaults: base.yaml" key).
 Run from the REPO ROOT:
     python3 task2/train.py --config task2/configs/source_only.yaml
     python3 task2/train.py --config task2/configs/dan.yaml
-    python3 task2/train.py --config task2/configs/dann.yaml
-    python3 task2/train.py --config task2/configs/cdan.yaml
+    python3 task2/train.py --config task2/configs/dann.yaml --backbone-lr-mult 0.1
+    python3 task2/train.py --config task2/configs/cdan.yaml --backbone-lr-mult 0.1
 
 Train source_only FIRST -- its checkpoint isn't required by the others at
 training time, but Task 3 reuses it unchanged as the ERM baseline, and
 evaluate_final.py needs it present to compute accuracy deltas.
+
+Learning-rate policy: the classifier head (model.fc) and, for DANN/CDAN, the
+domain discriminator use the base lr. The pretrained backbone uses
+lr * backbone_lr_mult. The multiplier defaults to 1.0 (identical to a single
+learning rate), so source_only and DAN are unchanged unless you pass it.
+It can be set with --backbone-lr-mult or via training.backbone_lr_mult in a
+yaml config; the CLI flag wins if both are given.
 """
 import argparse
 import importlib
@@ -58,14 +65,56 @@ def load_config(path):
     return merged
 
 
+def build_optimizer(model, cfg, backbone_lr_mult):
+    """
+    AdamW with two param groups:
+      - head group: model.fc (+ model.domain_discriminator if present), lr
+      - backbone group: everything else (conv layers + BN gamma/beta),
+        lr * backbone_lr_mult
+    """
+    lr = cfg["training"]["lr"]
+    weight_decay = cfg["training"]["weight_decay"]
+
+    head_params = list(model.fc.parameters())
+    if hasattr(model, "domain_discriminator"):
+        head_params += list(model.domain_discriminator.parameters())
+    head_ids = {id(p) for p in head_params}
+    backbone_params = [p for p in model.parameters() if id(p) not in head_ids]
+
+    optimizer = torch.optim.AdamW(
+        [
+            {"params": backbone_params, "lr": lr * backbone_lr_mult},
+            {"params": head_params, "lr": lr},
+        ],
+        weight_decay=weight_decay,
+    )
+    print(
+        f"Optimizer: backbone lr = {lr * backbone_lr_mult:g} "
+        f"({len(backbone_params)} tensors), head/discriminator lr = {lr:g} "
+        f"({len(head_params)} tensors)"
+    )
+    return optimizer
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", required=True)
+    parser.add_argument(
+        "--backbone-lr-mult", type=float, default=None,
+        help="Multiplier on the base lr for the pretrained backbone "
+             "(default: training.backbone_lr_mult in the config, else 1.0).",
+    )
     args = parser.parse_args()
 
     cfg = load_config(args.config)
     method_name = cfg["method"]["name"]
     device = "cuda" if torch.cuda.is_available() else ("mps" if torch.backends.mps.is_available() else "cpu")
+
+    backbone_lr_mult = (
+        args.backbone_lr_mult
+        if args.backbone_lr_mult is not None
+        else cfg["training"].get("backbone_lr_mult", 1.0)
+    )
 
     module = importlib.import_module(METHOD_MODULES[method_name])
 
@@ -92,9 +141,7 @@ def main():
     model = module.build_model(cfg).to(device)
     compute_loss_fn = module.make_compute_loss(cfg)
 
-    optimizer = torch.optim.AdamW(
-        model.parameters(), lr=cfg["training"]["lr"], weight_decay=cfg["training"]["weight_decay"]
-    )
+    optimizer = build_optimizer(model, cfg, backbone_lr_mult)
 
     torch.manual_seed(cfg["seed"])
 

@@ -9,3 +9,11 @@ task1/results/
 task2/results/
 task3/results/
 old results/
+data_raw/
+data/
+*.pt
+*.pth
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store
