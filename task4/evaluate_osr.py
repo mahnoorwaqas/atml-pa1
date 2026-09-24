@@ -25,7 +25,7 @@ import yaml
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from torchvision.datasets import CIFAR10, CIFAR100
+from task4.data.hf_cifar import CIFAR10HF as CIFAR10, CIFAR100HF as CIFAR100
 
 from task4.scores.msp import msp_score
 from task4.scores.mls import mls_score

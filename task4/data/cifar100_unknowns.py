@@ -8,7 +8,7 @@ per group gives exactly 800 images -- no sampling needed, just filtering by
 class name.
 """
 from torch.utils.data import Dataset, DataLoader
-from torchvision.datasets import CIFAR100
+from task4.data.hf_cifar import CIFAR100HF as CIFAR100
 
 from task4.data.cifar10 import CIFAR10_MEAN, CIFAR10_STD
 from torchvision import transforms as tvt

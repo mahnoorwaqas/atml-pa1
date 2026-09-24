@@ -12,7 +12,7 @@ import os
 
 import numpy as np
 from sklearn.model_selection import StratifiedShuffleSplit
-from torchvision.datasets import CIFAR10
+from task4.data.hf_cifar import CIFAR10HF as CIFAR10
 
 SPLIT_PATH = os.path.join(os.path.dirname(__file__), "..", "results", "cifar10_split_seed6304.json")
 

@@ -3,7 +3,7 @@ CIFAR-10 loading, transforms, and split-aware DataLoaders.
 """
 from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms as tvt
-from torchvision.datasets import CIFAR10
+from task4.data.hf_cifar import CIFAR10HF as CIFAR10
 
 CIFAR10_MEAN = (0.4914, 0.4822, 0.4465)
 CIFAR10_STD = (0.2470, 0.2435, 0.2616)
