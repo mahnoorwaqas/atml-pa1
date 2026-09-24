@@ -86,13 +86,24 @@ def _extract_features_batched(backbone, images_tensor, batch_size=64, desc="extr
     return torch.cat(feats, dim=0)
 
 
+def _to_cpu(obj):
+    """Recursively move tensors (including those inside dicts) to CPU."""
+    if isinstance(obj, torch.Tensor):
+        return obj.cpu()
+    if isinstance(obj, dict):
+        return {k: _to_cpu(v) for k, v in obj.items()}
+    return obj
+
+
 def _save_tensor(tensor, path):
+    """Always saves CPU tensors so files load on any machine (GPU or CPU)."""
     os.makedirs(os.path.dirname(path), exist_ok=True)
-    torch.save(tensor, path)
+    torch.save(_to_cpu(tensor), path)
 
 
 def _load_tensor(path):
-    return torch.load(path)
+    """Always loads onto CPU, even if the file was saved from a GPU run."""
+    return torch.load(path, map_location="cpu")
 
 
 def _load_head(name, backbone, n_classes):

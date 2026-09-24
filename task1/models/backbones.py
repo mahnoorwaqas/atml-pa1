@@ -129,9 +129,15 @@ class LinearHead:
         Trains full-batch (not mini-batched) each epoch — with a handful of
         thousand pre-extracted feature vectors this fits comfortably in
         memory, so there's no need for a DataLoader here.
+
+        All tensors are moved to train_features' device up front, so a
+        mismatch between features and labels can't occur.
         """
         device = train_features.device
         self.model.to(device)
+        train_labels = train_labels.to(device)
+        val_features = val_features.to(device)
+        val_labels = val_labels.to(device)
 
         cfg_head = cfg["classifier_head"]
         torch.manual_seed(cfg["seed"])
