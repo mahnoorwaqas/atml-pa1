@@ -1,0 +1,48 @@
+{
+  "near": [
+    {
+      "index": 285,
+      "true_unknown_class": "bus",
+      "predicted_known_class": "truck",
+      "score": -9.178653717041016,
+      "threshold": -5.908311367034912
+    },
+    {
+      "index": 509,
+      "true_unknown_class": "leopard",
+      "predicted_known_class": "frog",
+      "score": -8.290781021118164,
+      "threshold": -5.908311367034912
+    },
+    {
+      "index": 498,
+      "true_unknown_class": "bus",
+      "predicted_known_class": "truck",
+      "score": -10.193015098571777,
+      "threshold": -5.908311367034912
+    }
+  ],
+  "far": [
+    {
+      "index": 552,
+      "true_unknown_class": "clock",
+      "predicted_known_class": "cat",
+      "score": -9.664141654968262,
+      "threshold": -5.908311367034912
+    },
+    {
+      "index": 174,
+      "true_unknown_class": "chair",
+      "predicted_known_class": "airplane",
+      "score": -8.239641189575195,
+      "threshold": -5.908311367034912
+    },
+    {
+      "index": 142,
+      "true_unknown_class": "mushroom",
+      "predicted_known_class": "bird",
+      "score": -6.147466659545898,
+      "threshold": -5.908311367034912
+    }
+  ]
+}

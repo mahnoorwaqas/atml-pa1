@@ -1,0 +1,58 @@
+{
+  "vanilla": {
+    "closed_set_accuracy": 0.9459,
+    "auroc_near_mls": 0.8064089375000001,
+    "auroc_far_mls": 0.8943504375,
+    "auroc_all_mls": 0.8503796874999999,
+    "threshold": -5.908311367034912,
+    "known_acceptance_rate": 0.9456,
+    "near_unknown_rejection_rate": 0.33625,
+    "far_unknown_rejection_rate": 0.49875,
+    "all_unknown_rejection_rate": 0.4175,
+    "near_fpr_at_95tpr": 0.6637500000000001,
+    "far_fpr_at_95tpr": 0.50125,
+    "all_fpr_at_95tpr": 0.5825
+  },
+  "gcsc": {
+    "closed_set_accuracy": 0.9505,
+    "auroc_near_mls": 0.8098237500000001,
+    "auroc_far_mls": 0.9080595625,
+    "auroc_all_mls": 0.8589416562500001,
+    "threshold": -6.071115493774414,
+    "known_acceptance_rate": 0.9497,
+    "near_unknown_rejection_rate": 0.34625,
+    "far_unknown_rejection_rate": 0.56,
+    "all_unknown_rejection_rate": 0.453125,
+    "near_fpr_at_95tpr": 0.65375,
+    "far_fpr_at_95tpr": 0.43999999999999995,
+    "all_fpr_at_95tpr": 0.546875
+  },
+  "proser": {
+    "closed_set_accuracy": 0.9409,
+    "auroc_near_mls": 0.7868819375,
+    "auroc_far_mls": 0.870371875,
+    "auroc_all_mls": 0.8286269062499999,
+    "threshold": -4.327565670013428,
+    "known_acceptance_rate": 0.9487,
+    "near_unknown_rejection_rate": 0.2775,
+    "far_unknown_rejection_rate": 0.41875,
+    "all_unknown_rejection_rate": 0.348125,
+    "near_fpr_at_95tpr": 0.7224999999999999,
+    "far_fpr_at_95tpr": 0.58125,
+    "all_fpr_at_95tpr": 0.651875
+  },
+  "proser_placeholder_score": {
+    "closed_set_accuracy": 0.9409,
+    "auroc_near": 0.7812484375000001,
+    "auroc_far": 0.89352375,
+    "auroc_all": 0.83738609375,
+    "threshold": 0.6504195332527161,
+    "known_acceptance_rate": 0.9493,
+    "near_unknown_rejection_rate": 0.2725,
+    "far_unknown_rejection_rate": 0.4875,
+    "all_unknown_rejection_rate": 0.38,
+    "near_fpr_at_95tpr": 0.7275,
+    "far_fpr_at_95tpr": 0.5125,
+    "all_fpr_at_95tpr": 0.62
+  }
+}

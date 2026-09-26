@@ -1,0 +1,54 @@
+{
+  "msp": {
+    "auroc_near": 0.8248511875,
+    "auroc_far": 0.8991821875,
+    "auroc_all": 0.8620166874999999,
+    "threshold": 0.16714680194854736,
+    "known_acceptance_rate": 0.9482,
+    "near_unknown_rejection_rate": 0.2975,
+    "far_unknown_rejection_rate": 0.40625,
+    "all_unknown_rejection_rate": 0.351875,
+    "near_fpr_at_95tpr": 0.7025,
+    "far_fpr_at_95tpr": 0.59375,
+    "all_fpr_at_95tpr": 0.6481250000000001
+  },
+  "mls": {
+    "auroc_near": 0.8064089375000001,
+    "auroc_far": 0.8943504375,
+    "auroc_all": 0.8503796874999999,
+    "threshold": -5.908311367034912,
+    "known_acceptance_rate": 0.9456,
+    "near_unknown_rejection_rate": 0.33625,
+    "far_unknown_rejection_rate": 0.49875,
+    "all_unknown_rejection_rate": 0.4175,
+    "near_fpr_at_95tpr": 0.6637500000000001,
+    "far_fpr_at_95tpr": 0.50125,
+    "all_fpr_at_95tpr": 0.5825
+  },
+  "energy": {
+    "auroc_near": 0.8063792500000001,
+    "auroc_far": 0.894840125,
+    "auroc_all": 0.8506096875000001,
+    "threshold": -6.047930717468262,
+    "known_acceptance_rate": 0.9492,
+    "near_unknown_rejection_rate": 0.31625,
+    "far_unknown_rejection_rate": 0.5,
+    "all_unknown_rejection_rate": 0.408125,
+    "near_fpr_at_95tpr": 0.6837500000000001,
+    "far_fpr_at_95tpr": 0.5,
+    "all_fpr_at_95tpr": 0.5918749999999999
+  },
+  "mahalanobis": {
+    "auroc_near": 0.7948446875,
+    "auroc_far": 0.9148543749999999,
+    "auroc_all": 0.8548495312500001,
+    "threshold": 2781.5611249810663,
+    "known_acceptance_rate": 0.9466,
+    "near_unknown_rejection_rate": 0.29,
+    "far_unknown_rejection_rate": 0.51375,
+    "all_unknown_rejection_rate": 0.401875,
+    "near_fpr_at_95tpr": 0.71,
+    "far_fpr_at_95tpr": 0.48624999999999996,
+    "all_fpr_at_95tpr": 0.598125
+  }
+}
